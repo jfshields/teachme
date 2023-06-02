@@ -4,6 +4,7 @@ import QuantumPhysics from '../data/QuantumPhysics'
 import Wine from '../data/Wine'
 import LatestAITrends from '../data/LatestAITrends'
 import AmericanHistory from '../data/AmericanHistory'
+import config from '../config.js'
 
 const checkResponse = (listOfStrings) => {
   const noEmpty = listOfStrings.filter((str) => Boolean(str));
@@ -24,7 +25,7 @@ const getTopics = async (userInput) => {
       {
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': 'Bearer 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',
+          'Authorization': `Bearer ${config.OPENAI_API_KEY}`,
         },
       }
     );
@@ -53,7 +54,7 @@ const getTopicLessons = async (topic) => {
       {
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': 'Bearer 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',
+          'Authorization': `Bearer ${config.OPENAI_API_KEY}`,
         },
       }
     );
