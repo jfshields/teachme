@@ -1,9 +1,4 @@
 import axios from 'axios';
-import HenryTheEigth from '../data/HenryTheEigth'
-import QuantumPhysics from '../data/QuantumPhysics'
-import Wine from '../data/Wine'
-import LatestAITrends from '../data/LatestAITrends'
-import AmericanHistory from '../data/AmericanHistory'
 import config from '../config.js'
 
 const checkResponse = (listOfStrings) => {
@@ -13,6 +8,7 @@ const checkResponse = (listOfStrings) => {
 
 
 const getTopics = async (userInput) => {
+  console.log('ChatGPT input:', userInput);
   var reply = []
   try {
     const response = await axios.post(
@@ -48,7 +44,7 @@ const getTopicLessons = async (topic) => {
       'https://api.openai.com/v1/chat/completions',
       {
           model: "gpt-3.5-turbo",
-          messages: [{"role": "user", "content": `Provide me 5-7 long statements to teach me all the key and interesting points about the ${topic}. Separate each statement with a new line only`}],
+          messages: [{"role": "user", "content": `Provide me 5-7 summarised statements to teach me all the key and interesting points about the ${topic}. Separate each statement with a new line only.`}],
           temperature: 0.7
       },
       {
